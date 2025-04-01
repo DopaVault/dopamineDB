@@ -1,5 +1,6 @@
 package com.api.dopaminedb.storageEngine;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.iq80.leveldb.DB;
@@ -72,5 +73,10 @@ public class LevelDBStorageEngine {
     if (db != null) {
       db.close();
     }
+  }
+
+  @PostConstruct
+  public void initaliseDopamine(){
+    createFile("dopamine.db");
   }
 }
